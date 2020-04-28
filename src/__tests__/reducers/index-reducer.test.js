@@ -14,4 +14,8 @@ describe('rootReducer', () => {
     });
   });
 
+  test('Check thst initial state of postListReducer matches root reducer', () => {
+    expect(store.getState().masterPostList).toEqual(postListReducer(undefined, { type: null }));
+  });
+
 });
