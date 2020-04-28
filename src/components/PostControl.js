@@ -11,7 +11,7 @@ class PostControl extends React.Component {
     super(props);
     console.log(props);
     this.state = {
-      formVisibleOnPage: false,
+      // formVisibleOnPage: false,
       selectedPost: null,
       editing: false,
     };
@@ -44,7 +44,7 @@ class PostControl extends React.Component {
       upvotes: upvotes
     }
     dispatch(action);
-    this.setState({formVisibleOnPage: false});
+    // this.setState({formVisibleOnPage: false});
   }
 
   handleChangingSelectedPost = (id) => {
@@ -133,8 +133,9 @@ PostControl.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    masterPostList: state
-  };
+    masterPostList: state.masterPostList,
+    formVisibleOnPage: state.formVisibileOnPage
+  }
 }
 
 PostControl = connect(mapStateToProps)(PostControl);
