@@ -133,15 +133,10 @@ PostControl.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    masterPostList: state.masterPostList,
-    formVisibleOnPage: state.formVisibleOnPage,
+    masterPostList: state
   };
 }
 
 PostControl = connect(mapStateToProps)(PostControl);
-
-// I am not sure if this is right, but it is in the example from part II in the HW
-PostControl = connect()(PostControl);
-
 
 export default PostControl;
