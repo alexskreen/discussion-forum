@@ -2,21 +2,6 @@ import postListReducer from '../../reducers/post-list-reducer';
 
 describe('postListReducer', () => {
   let action;
-  const currentState = {
-    1: { user: 'Test User',
-      title: 'Test Title',
-      body: 'Test Body',
-      upvotes: 'Test upvotes',
-      id: 1 
-    },
-    2: { user: 'Test User2',
-      title: 'Test Title2',
-      body: 'Test Body2',
-      upvotes: 'Test upvotes2',
-      id: 2 
-    }
-  }
-  
   const postData = {
     user: 'Test User',
     title: 'Test Title',
@@ -24,6 +9,22 @@ describe('postListReducer', () => {
     upvotes: 'Test upvotes',
     id: 1
   };
+
+  const currentState = {
+    1: { user: 'Test User',
+      title: 'Test Title',
+      body: 'Test Body',
+      upvotes: 'Test Upvotes',
+      id: 1 
+    },
+    2: { user: 'Test User2',
+      title: 'Test Title2',
+      body: 'Test Body2',
+      upvotes: 'Test Upvotes2',
+      id: 2 
+    }
+  };
+  
   
   test('Should return default state if there is no action type passed into the reducer', () => {
     expect(postListReducer({}, { type: null })).toEqual({})
@@ -39,7 +40,6 @@ describe('postListReducer', () => {
         upvotes: upvotes,
         id: 1
       };
-
     expect(postListReducer({}, action)).toEqual({
       [id]: {
         user: user,
@@ -50,4 +50,19 @@ describe('postListReducer', () => {
       }
     });
   });
+    
+  test('Should successfully delete a post', () => {
+  action = {
+  type: 'DELETE_POST',
+  id: 1
+    };
+    expect(postListReducer(currentState, action)).toEqual({
+      2: {user: 'Test User2',
+        title: 'Test Title2',
+        body: 'Test Body2',
+        upvotes: "Test Upvotes2",
+        id: 2 }
+    });
+  });
+
 });
